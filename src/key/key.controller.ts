@@ -8,16 +8,6 @@ import { KeyResponseDTO } from './key-response.dto';
 export class KeyController {
   constructor(private readonly keyService: KeyService) {}
 
-  @Get()
-  async getAllKeys(): Promise<KeyResponseDTO[]> {
-    return await this.keyService.getAllKeys();
-  }
-
-  @Get(':id')
-  async getKey(@Param('id') id: string): Promise<KeyResponseDTO|null> {
-    return await this.keyService.getKeyById(id);
-  }
-
   @Post()
   async useKey(@Body() keyDto: UseKeyDTO): Promise<KeyResponseDTO> {
     return await this.keyService.useKey(keyDto);
